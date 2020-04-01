@@ -21,6 +21,10 @@ var commentRoutes 	 = require("./routes/comments"),
 	indexRoutes 	 = require("./routes/index");
 
 // seedDB();
+mongoose.connect("mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority", {
+	useNewUrlParser: true,
+	useCreateIndex: true
+});
 mongoose.connect('mongodb://mongoss:27017/yelpcamps',{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
