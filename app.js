@@ -24,6 +24,8 @@ var commentRoutes 	 = require("./routes/comments"),
 mongoose.connect("mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 	useCreateIndex: true
+}).then(() => {
+	console.log("connected to ATLAS")
 });
 mongoose.connect('mongodb://mongoss:27017/yelpcamps',{ useNewUrlParser: true });
 
