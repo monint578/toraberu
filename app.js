@@ -17,6 +17,7 @@ var	Kruva 	= require("./models/campground"),
 var commentRoutes 	 = require("./routes/comments"),
 	reviewRoutes     = require("./routes/reviews"),
 	campgroundRoutes = require("./routes/campgrounds"),
+	userRoutes		 = require("./routes/user"),
 	indexRoutes 	 = require("./routes/index");
 
 // seedDB();
@@ -48,11 +49,12 @@ app.use(function(req, res, next){
 	next()
 });
 
+//ROUTES
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments/", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
-
+app.use("/user", userRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
 	console.log("YelpCamp server started");

@@ -9,6 +9,7 @@ router.get("/", function(req, res){
 	Kruva.find({}, function(err, allCampgrounds) {
 		if(err){
 			console.log(err);
+			req.flash("error", "Something went wrong");
 		} else {
 			res.render("campgrounds/campgrounds", {sklypas: allCampgrounds});
 		}
