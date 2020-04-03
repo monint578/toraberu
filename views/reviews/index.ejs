@@ -1,65 +1,54 @@
 <%- include ("../partials/header") %>
 
-<div class="container">
+<div class="container-fluid py-4 px-5">
+    <header class="jumbotron py-3 px-5 mb-0">
+		<h1 class="display-5">"<%= content.name %>" review page</h1>
+        <p class="lead">
+            <% if (content.rating === 0) { %>
+            <h5><em>No reviews yet.</em></h5>
+            <% } else { %>
+            <p>
+                <span class="fas fa-star checked"></span>
+                <span class="<% if (content.rating > 1.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                <span class="<% if (content.rating > 2.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                <span class="<% if (content.rating > 3.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                <span class="<% if (content.rating > 4.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                <strong><%= content.rating.toFixed(2) %></strong>
+                <em>(total reviews: <%= content.reviews.length %>)</em>
+            </p>
+            <% } %>
+        </p>
+        <a class="btn btn-info" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
+		<a class="btn btn-info <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/places/<%= content._id %>/reviews/new">
+            Write a New Review</a>
+    </header>
+    <br>
     <div class="row">
         <div class="col-md-12">
-            <h1 style="text-align: center">Review Page: <%= campground.name %></h1>
-            <a href="/campgrounds/<%= campground._id %>">Go back to the campground page</a>
-            <div class="thumbnail">
-                <div class="caption-full">
-                    <% if (campground.rating === 0) { %>
-                    <h5>
-                        <em>No reviews yet.</em>
-                    </h5>
-                    <% } else { %>
-                    <p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
-                        <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
-                        <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
-                        <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
-                        <em>(total reviews: <%= campground.reviews.length %>)</em>
-                    </p>
-                    <p>
-                        Current campground rating: <strong><%= campground.rating.toFixed(2) %></strong>
-                    </p>
-                    <p><h4>All reviews for this campground:</h4></p>
-                    <hr style="margin-top: 0;">
-                    <% campground.reviews.forEach(function(review){ %>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
-                            <div>Review by: <strong><%= review.author.username %></strong></div>
-                            <span><em><%= review.updatedAt.toDateString() %></em></span>
-                        </div>
-                        <div class="col-md-9">
-                            <p style="text-align: justify; word-wrap: break-word;">
-                                <%= review.text %>
-                            </p>
-                            <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
-                            <a class="btn btn-xs btn-warning"
-                               href="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
-                            <form id="delete-form" action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                            </form>
-                            <% } %>
-                        </div>
+            <% content.reviews.forEach(function(review){ %>
+                <div class="row">
+                    <div class="col-md-3">
+                        <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="far fa-star checked"></span>'.repeat(5 - review.rating) %>
+                        <div>Review by: <strong><%= review.author.username %></strong></div>
+                        <span><em><%= review.updatedAt.toDateString() %></em></span>
                     </div>
-                    <hr>
-                    <% }); %>
+                    <div class="col-md-9">
+                        <p style="text-align: justify; word-wrap: break-word;">
+                            <%= review.text %>
+                        </p>
+                    <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-outline-info btn-sm"
+                        href="/places/<%=content._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                        <!-- <form class="delete-form" action="/places/<%=content._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                            <input type="submit" class="btn btn-info btn-sm" value="Delete">
+                        </form> -->
                     <% } %>
-                    <div>
-                        <a class="btn btn-primary <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/campgrounds/<%= campground._id %>/reviews/new">
-                            Write a New Review</a>
-                    </div>
-                    <div style="margin-top: 10px;">
-                        <a class="btn btn-default" href="/campgrounds/<%= campground._id %>"><i class="fa fa-arrow-left"></i> Go back</a>
                     </div>
                 </div>
-            </div>
-        </div>
+                <hr>
+            <% }); %>
+        </div>   
     </div>
-    <!--Review section-->
 </div>
 
 <%- include ("../partials/footer") %>

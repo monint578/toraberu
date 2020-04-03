@@ -1,0 +1,141 @@
+<%- include ("../partials/header") %>
+
+<div class="container-fluid pt-4 px-5">
+    <!-- <a class="btn btn-info" href="/places">Go Back</a> -->
+    <div class="show-head d-flex justify-content-between align-self-center rounded">
+        <h2><%= content.name %> / Kaunas, Lithuania</h2>
+            <% if (content.rating === 0) { %>
+                <h5><em>No reviews yet.</em></h5>
+                <% } else { %>
+                <p>
+                    <span class="fas fa-star checked"></span>
+                    <span class="<% if (content.rating > 1.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                    <span class="<% if (content.rating > 2.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                    <span class="<% if (content.rating > 3.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                    <span class="<% if (content.rating > 4.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
+                    <strong><%= content.rating.toFixed(2) %></strong>
+                    <em>(total reviews: <%= content.reviews.length %>)</em>
+                </p>
+                <% }; %>
+    </div>
+    <br>
+    <div class="row">
+        <div class= "col-md-7">
+            <ul class="nav nav-tabs">
+                <li class="nav-item tabs rounded-top">
+                  <a class="nav-link active tab-a" data-toggle="tab" href="#info">Info</a>
+                </li>
+                <li class="nav-item tabs rounded-top">
+                  <a class="nav-link tab-a" data-toggle="tab" href="#reviews">Reviews</a>
+                </li>
+                <li class="nav-item tabs rounded-top">
+                  <a class="nav-link tab-a" data-toggle="tab" href="#comments">Comments</a>
+                </li>
+            </ul>
+            <div class="tab-content rounded">
+                <!-- FIRST NAV - INFO -->
+                <div id="info" class="container tab-pane active pb-3"><br>
+                    <p><%= content.description %></p>
+                    <p><em>Submitted By <%= content.author.username %>, <%= moment(content.createdAt).fromNow() %></em></p>
+                    <% if(currentUser && content.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-outline-info btn-sm" href="/places/<%= content._id %>/edit">Edit place</a>
+                        <form class="delete-form" action="/places/<%= content._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-info btn-sm">Delete place</button>
+                        </form>
+                    <% }; %>
+                </div>
+                <!-- SECOND NAV - REVIEWS -->
+                <div id="reviews" class="container tab-pane fade"><br>
+                    <% if (content.rating === 0) { %>
+                        <h5><em>No reviews yet.</em></h5>
+                    <% } else { %>
+                        <% content.reviews.slice(0, 5).forEach(function(review){ %>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="far fa-star checked"></span>'.repeat(5 - review.rating) %>
+                                <div>Review by: <strong><%= review.author.username %></strong></div>
+                                <span><em><%= review.updatedAt.toDateString() %></em></span>
+                            </div>
+                            <div class="col-md-9">
+                                <p style="text-align: justify; word-wrap: break-word;"><%= review.text %></p>
+                                <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-sm btn-outline-info"
+                                    href="/places/<%=content._id %>/reviews/<%=review._id %>/edit">Edit review</a>
+                                <!-- <form class="delete-form" action="/places/<%=content._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                </form> -->
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }); %>
+                    <div class="mb-1">
+                        <hr class="mb-0">
+                        <a class="btn btn-info btn-sm <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/places/<%= content._id %>/reviews/new">
+                            Write a New Review</a>
+                        <p><a href="/places/<%= content._id %>/reviews"><i class="fas fa-search" aria-hidden="true"></i> See all reviews</a></p>
+                    </div>
+                    <% }; %>
+                </div>
+                <!-- THIRD NAV - COMMENTS -->
+                <div id="comments" class="container tab-pane fade"><br>
+                    <% content.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div>Comment by: <strong><%= comment.author.username %></strong></div>
+                            <span><em><%= comment.createdAt.toDateString() %></em></span>
+                        </div>
+                        <div class="col-md-9">
+                            <p><%= comment.text %></p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a class="btn btn-sm btn-outline-info" href="/places/<%= content._id%>/comments/<%= comment._id %>/edit">Edit comment</a>
+                                <form class="delete-form" action="/places/<%= content._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm btn-info">Delete comment</button>
+                                </form>
+                            <% }; %>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <hr class="mb-0">
+                        <a class="btn btn-info btn-sm" href="/places/<%= content._id %>/comments/new">Add new comment</a>
+                        <p><a href="/places/<%= content._id %>/comments"><i class="fas fa-search" aria-hidden="true"></i> See all comments</a></p>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <li data-target="#demo" data-slide-to="1"></li>
+                  <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="<%= content.image %>" alt="Chicago" width="1100" height="500">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="<%= content.image %>" alt="Chicago" width="1100" height="500">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="<%= content.image %>" alt="Chicago" width="1100" height="500">
+                  </div>
+                </div>
+                
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+              </div>
+        </div>
+    </div>
+    <br>
+</div>
+<%- include ("../partials/footer") %>

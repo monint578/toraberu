@@ -28,8 +28,8 @@ var reviewSchema = new mongoose.Schema({
         },
         username: String
     },
-    // campground associated with the review
-    campground: {
+    // content associated with the review
+    content: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Campground"
     }

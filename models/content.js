@@ -1,8 +1,7 @@
 var mongoose = require("mongoose");
 
-var suduSchema = new mongoose.Schema({
+var contentSchema = new mongoose.Schema({
 	name: String,
-	price: String,
 	image: String,
 	description: String,
 	createdAt: { type: Date, default: Date.now },
@@ -31,4 +30,4 @@ var suduSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Kruva", suduSchema);
+module.exports = mongoose.model("Content", contentSchema);

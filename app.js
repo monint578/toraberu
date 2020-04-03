@@ -5,34 +5,36 @@ var express = require("express"),
   flash = require("connect-flash"),
   passport = require("passport"),
   moment = require("moment");
-(LocalStrategy = require("passport-local").Strategy),
-  (passportLocalMongoose = require("passport-local-mongoose")),
-  (methodOverrite = require("method-override"));
+  LocalStrategy = require("passport-local").Strategy,
+  passportLocalMongoose = require("passport-local-mongoose"),
+  methodOverrite = require("method-override");
 
-var Kruva = require("./models/campground"),
+var Content = require("./models/content"),
   seedDB = require("./seeds"),
   Comment = require("./models/comment"),
   User = require("./models/user");
 
 var commentRoutes = require("./routes/comments"),
   reviewRoutes = require("./routes/reviews"),
-  campgroundRoutes = require("./routes/campgrounds"),
+  contentRoutes = require("./routes/content"),
   userRoutes = require("./routes/user"),
   indexRoutes = require("./routes/index");
 
 // seedDB();
-mongoose
-  .connect(
-    "mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true
-    }
-  )
-  .then(() => {
-    console.log("connected to ATLAS");
-  });
-//mongoose.connect('mongodb://mongoss:27017/yelpcamps',{ useNewUrlParser: true });
+// mongoose
+//   .connect(
+//     "mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority",
+//     {
+//       useNewUrlParser: true,
+//       useCreateIndex: true
+//     }
+//   )
+//   .then(() => {
+//     console.log("connected to ATLAS");
+//   });
+mongoose.connect("mongodb://mongoss:27017/yelpcamps", {
+  useNewUrlParser: true
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -64,9 +66,9 @@ app.use(function(req, res, next) {
 
 //ROUTES
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments/", commentRoutes);
-app.use("/campgrounds/:id/reviews", reviewRoutes);
+app.use("/places", contentRoutes);
+app.use("/places/:id/comments/", commentRoutes);
+app.use("/places/:id/reviews", reviewRoutes);
 app.use("/user", userRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function() {

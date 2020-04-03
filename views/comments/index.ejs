@@ -1,0 +1,37 @@
+<%- include ("../partials/header") %>
+
+<div class="container-fluid py-4 px-5">
+    <header class="jumbotron py-3 px-5 mb-0">
+		<h1 class="display-5">"<%= content.name %>" comments page</h1>
+        <p class="lead"></p>
+        <a class="btn btn-info" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
+        <a class="btn btn-info" href="/places/<%= content._id %>/comments/new">Add new comment</a>
+    </header>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <% content.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>Comment by: <strong><%= comment.author.username %></strong></div>
+                        <span><em><%= comment.createdAt.toDateString() %></em></span>
+                    </div>    
+                    <div class="col-md-9">
+                        <p style="text-align: justify; word-wrap: break-word;">
+                            <p><%= comment.text %></p>
+                        </p>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-sm btn-outline-info" href="/places/<%= content._id%>/comments/<%= comment._id %>/edit">Edit comment</a>
+                            <form class="delete-form" action="/places/<%= content._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-info">Delete comment</button>
+                            </form>
+                        <% }; %>
+                    </div>
+                </div>
+                <hr>
+            <% }); %>
+        </div>   
+    </div>
+</div>
+
+<%- include ("../partials/footer") %>

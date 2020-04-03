@@ -1,20 +1,20 @@
 //ALL MIDDLEWARE GOES HERE
 var middlewareObj = {};
-var Kruva = require("../models/campground");
+var Content = require("../models/content");
 var Comment = require("../models/comment");
 var Review = require("../models/review");
 
-//Campground middleware
-middlewareObj.chechCampgroundOwnership = function(req, res, next) {
+//content middleware
+middlewareObj.chechContentOwnership = function(req, res, next) {
 	//is user logged in 
 	if(req.isAuthenticated()){
-		Kruva.findById(req.params.id, function (err, foundCampground){
+		Content.findById(req.params.id, function (err, foundContent){
 			if(err){
-				req.flash("error", "Campground not found");
+				req.flash("error", "Content not found");
 				res.redirect("back");
 			} else {
-				//does user own the campgrounds?
-				if(foundCampground.author.id.equals(req.user._id)){
+				//does user own the Contents?
+				if(foundContent.author.id.equals(req.user._id)){
 					next();
 				} else {
 					req.flash("error", "You don't have permission to do that");
@@ -38,7 +38,7 @@ middlewareObj.chechCommentsOwnership = function(req, res, next) {
 				req.flash("error", "Something went wrong");
 				res.redirect("back");
 			} else {
-				//does user own the campgrounds?
+				//does user own the Contents?
 				if(foundComment.author.id.equals(req.user.id)){
 					next();
 				} else {
@@ -84,21 +84,21 @@ middlewareObj.checkReviewOwnership = function(req, res, next) {
         res.redirect("back");
     }
 };
-//checks if the user already reviewed the campground and disallows further actions if they did.
+//checks if the user already reviewed the Content and disallows further actions if they did.
 middlewareObj.checkReviewExistence = function (req, res, next) {
     if (req.isAuthenticated()) {
-        Kruva.findById(req.params.id).populate("reviews").exec(function (err, foundCampground) {
-            if (err || !foundCampground) {
-                req.flash("error", "Campground not found.");
+        Content.findById(req.params.id).populate("reviews").exec(function (err, foundContent) {
+            if (err || !foundContent) {
+                req.flash("error", "Content not found.");
                 res.redirect("back");
             } else {
-                // check if req.user._id exists in foundCampground.reviews
-                var foundUserReview = foundCampground.reviews.some(function (review) {
+                // check if req.user._id exists in foundContent.reviews
+                var foundUserReview = foundContent.reviews.some(function (review) {
                     return review.author.id.equals(req.user._id);
                 });
                 if (foundUserReview) {
                     req.flash("error", "You already wrote a review.");
-                    return res.redirect("/campgrounds/" + foundCampground._id);
+                    return res.redirect("/places/" + foundContent._id);
                 }
                 // if the review was not found, go to the next middleware
                 next();
