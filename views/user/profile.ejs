@@ -6,41 +6,50 @@
       <br>
       <form action="/register" method="POST">
         <div class="form-group row">
-          <label class="col-sm-2 control-label">Username:</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Username:</label>
+          <div class="col-sm-9">
               <input class="form-control" type="text" name="currentUser[username]" value="<%= currentUser.username %>" readonly>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 control-label">Email adress:</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Email adress:</label>
+          <div class="col-sm-9">
               <input class="form-control" type="email" name="currentUser[email]" value="<%= currentUser.email %>" readonly>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 control-label">First Name:</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">First Name:</label>
+          <div class="col-sm-9">
               <input class="form-control" type="text" name="currentUser[firstName]" value="<%= currentUser.firstName %>" readonly>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 control-label">Last Name:</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Last Name:</label>
+          <div class="col-sm-9">
               <input class="form-control" type="text" name="currentUser[lastName]" value="<%= currentUser.lastName %>" readonly>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 control-label">Avatar:</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Avatar:</label>
+          <div class="col-sm-9">
               <input class="form-control" type="text" name="currentUser[avatar]" value="<%= currentUser.avatar%>" readonly>
           </div>
         </div>
-        <div class="form-group col-sm-12">
-          <a class="btn btn-info" href="/user/<%= currentUser._id %>/edit">Edit</a>
+        <div class="form-group row">
+          <label class="col-sm-3 control-label">More about You:</label>
+          <div class="col-sm-9">
+              <textarea class="form-control" type="text" name="currentUser[description]" rows="6" readonly><%= currentUser.description%></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
+          </div>
+          <div class="col-sm-9">
+            <a class="btn btn-info form-control" href="/user/<%= currentUser._id %>/edit">Edit your profile</a>
+          </div>
         </div>
       </form>
-      <a class="btn btn-info" href="/user/<%= currentUser._id %>/edit">Edit</a>
-      <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
     </div>
   </div>
 </div>

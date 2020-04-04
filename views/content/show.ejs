@@ -2,11 +2,14 @@
 
 <div class="container-fluid pt-4 px-5">
     <!-- <a class="btn btn-info" href="/places">Go Back</a> -->
-    <div class="show-head d-flex justify-content-between align-self-center rounded">
+    <div class="show-head d-flex justify-content-between align-items-center rounded">
         <%= console.log(content.images) %>
-        <h2><%= content.name %> / Kaunas, Lithuania</h2>
+        <div class="d-flex align-items-center" style="align-items: baseline !important;">
+            <h2 class="m-0"><%= content.name %></h2>
+            <h4 class="m-0 pl-2 text-secondary font-weight-light">/ <%= content.location %></h4>
+        </div>
             <% if (content.rating === 0) { %>
-                <h5><em>No reviews yet.</em></h5>
+                <h5 class="m-0"><em>No reviews yet.</em></h5>
                 <% } else { %>
                 <p>
                     <span class="fas fa-star checked"></span>
