@@ -5,8 +5,8 @@ var middleware = require("../middleware");
 var Review = require("../models/review");
 
 //INDEX - show all content
-router.get("/", function(req, res) {
-  Content.find({}, function(err, allContents) {
+router.get("/", function (req, res) {
+  Content.find({}, function (err, allContents) {
     if (err) {
       console.log(err);
     } else {
@@ -16,24 +16,25 @@ router.get("/", function(req, res) {
 });
 
 //CREATE - add new content to DB
-router.post("/", middleware.isLoggedIn, function(req, res) {
-  //get data from form and add to content array
-  var name = req.body.name;
-  var image = req.body.image;
-  var desc = req.body.description;
-  var price = req.body.price;
+router.post("/", middleware.isLoggedIn, function (req, res) {
+  // get data from form and add to content array
+  var name = req.body.content.name;
+  var desc = req.body.content.description;
+  var location = req.body.content.location;
+  var images = req.body.images;
+
   var author = {
     id: req.user._id,
-    username: req.user.username
+    username: req.user.username,
   };
   var newContent = {
     name: name,
-    image: image,
-    price: price,
+    location: location,
+    images: images,
     description: desc,
-    author: author
+    author: author,
   };
-  Content.create(newContent, function(err, newlyCreated) {
+  Content.create(newContent, function (err, newlyCreated) {
     if (err) {
       console.log(err);
     } else {
@@ -47,20 +48,20 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 });
 
 //NEW - show form to create new content
-router.get("/new", middleware.isLoggedIn, function(req, res) {
+router.get("/new", middleware.isLoggedIn, function (req, res) {
   res.render("content/new");
 });
 
 // SHOW - shows more info about one content
-router.get("/:id", function(req, res) {
+router.get("/:id", function (req, res) {
   //find the content with provided ID
   Content.findById(req.params.id)
     .populate("comments")
     .populate({
       path: "reviews",
-      options: { sort: { createdAt: -1 } }
+      options: { sort: { createdAt: -1 } },
     })
-    .exec(function(err, foundContent) {
+    .exec(function (err, foundContent) {
       if (err) {
         console.log(err);
       } else {
@@ -71,14 +72,17 @@ router.get("/:id", function(req, res) {
 });
 
 //EDIT CAMPGROUND ROUTE
-router.get("/:id/edit", middleware.chechContentOwnership, function(req, res) {
-  Content.findById(req.params.id, function(err, foundContent) {
+router.get("/:id/edit", middleware.chechContentOwnership, function (req, res) {
+  Content.findById(req.params.id, function (err, foundContent) {
     res.render("content/edit", { content: foundContent });
   });
 });
 //UPDATE CAMPGROUD ROUTE
-router.put("/:id", middleware.chechContentOwnership, function(req, res) {
-  Content.findByIdAndUpdate(req.params.id, req.body.content, function(err, updatedContent) {
+router.put("/:id", middleware.chechContentOwnership, function (req, res) {
+  Content.findByIdAndUpdate(req.params.id, req.body.content, function (
+    err,
+    updatedContent
+  ) {
     if (err) {
       res.redirect("/places");
     } else {
@@ -88,14 +92,17 @@ router.put("/:id", middleware.chechContentOwnership, function(req, res) {
 });
 // DESTROY CAMPGROUND ROUTE
 router.delete("/:id", middleware.chechContentOwnership, function (req, res) {
-    Content.findByIdAndDelete(req.params.id, req.body.content, function (err, Upcontent) {
-        if (err) {
-            res.redirect("/places");
-        } else {
-          res.redirect("/places");
-        }
-      });
-    });
+  Content.findByIdAndDelete(req.params.id, req.body.content, function (
+    err,
+    Upcontent
+  ) {
+    if (err) {
+      res.redirect("/places");
+    } else {
+      res.redirect("/places");
+    }
+  });
+});
 //             // deletes all comments associated with the content
 //             Comment.remove({"_id": {$in: content.comments}}, function (err) {
 //                 if (err) {

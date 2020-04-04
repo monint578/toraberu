@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var contentSchema = new mongoose.Schema({
 	name: String,
-	image: String,
+	location: String,
 	description: String,
 	createdAt: { type: Date, default: Date.now },
 	author: {
@@ -12,6 +12,7 @@ var contentSchema = new mongoose.Schema({
 		},
 		username: String
 	},
+	images: [String],
 	comments: [
 		{
 		  type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +28,7 @@ var contentSchema = new mongoose.Schema({
     rating: {
         type: Number,
         default: 0
-    }
+	}
 });
 
 module.exports = mongoose.model("Content", contentSchema);

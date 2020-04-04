@@ -60,6 +60,11 @@ a:hover {
 .checked {
   color: #17a2b8;
 }
+/*FORMS*/
+.maid-container {
+  margin: 0 40vh;
+}
+
 /*PICTURE CAROUSEL*/
 .carousel-inner img {
   width: 100%;

@@ -5,29 +5,37 @@
   <div style="width: 30%; margin: 25px auto;">
     <form action="/places" method="POST">
       <div class="form-group">
-        <input class="form-control" type="text" name="content[name]" placeholder="Campground name"/>
+        <input class="form-control" type="text" name="content[name]" placeholder="Campground name" required/>
+      </div>
+      <div class="valid-tooltip">
+        Looks good!
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="content[location]" placeholder="Location"/>
+        <input class="form-control" type="text" name="content[location]" placeholder="Location" required/>
+      </div>
+      <div class="form-group" id="images">
+        <div class="form-group">
+          <input class="form-control" type="text" name="images[]" placeholder="Main image url" required/>
+        </div>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="content[image]" placeholder="Main image url"/>
+        <a href="#" id="addImage" class="btn btn-outline-info btn-sm">Add more images</a>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="content[image]" placeholder="Additional image url (optional)"/>
+        <textarea class="form-control" type="text" name="content[description]" placeholder="Place description" rows="6" required></textarea>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="content[image]" placeholder="Additional image url (optional)"/>
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" type="text" name="content[description]" placeholder="Place description" rows="6"></textarea>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-lg btn-outline-info btn-block">Submit</button>
+        <button type="submit" class="btn btn-lg btn-outline-info btn-block">Submit</button>
       </div>
     </form>
     <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
   </div>
 </div>
+
+<template id="additionalImage">
+  <div class="form-group">
+    <input class="form-control" type="text" name="images[]" placeholder="Additional image url" required/>
+  </div>
+</template>
 
 <%- include ("../partials/footer") %>
