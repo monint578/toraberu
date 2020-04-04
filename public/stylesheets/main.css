@@ -26,9 +26,17 @@ a:hover {
   transform: scale(1.05);
 }
 .jumbotron {
-  background-image: url(https://images.unsplash.com/photo-1495765439174-cebc27820cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  background-image: url(https://images.unsplash.com/photo-1549247796-5d8f09e9034b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1299&q=80);
   background-size: 100%;
+  color: #fff;
+  opacity: 0.9;
   background-position-y: center;
+}
+.btn-info:hover {
+  color: #17a2b8;
+  background-color: transparent;
+  background-image: none;
+  border-color: #17a2b8;
 }
 /*SHOW PAGE*/
 .show-head {
@@ -61,23 +69,21 @@ a:hover {
   background-color: #e9ecef;
   height: 200px;
 }
-
+/*LANDING PAGE*/
 #landing-header {
   z-index: 3;
   position: relative;
   text-align: center;
-  padding-top: 40vh;
   color: black;
-}
-.white {
-  background-color: white;
-  z-index: 2;
-  background-size: 30vh;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 30px 10px;
+  border-radius: 5px;
+  margin: 35vh 40vh;
 }
 .slideshow {
   list-style-type: none;
 }
-/*SLIDESHOW*/
 .slideshow, .slideshow:after {
   top: -16px; /*Not sure why I needed this fix*/
   width: 100%;
@@ -100,18 +106,18 @@ a:hover {
   animation: imageAnimation 30s linear infinite 0s;
 }
 .slideshow li:nth-child(1) span {
-  background-image: url("https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1093&q=80");
+  background-image: url("https://images.unsplash.com/photo-1549247796-5d8f09e9034b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1299&q=80");
 }
 .slideshow li:nth-child(2) span {
-  background-image: url("https://images.unsplash.com/photo-1478562672393-2412e5b9d634?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+  background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80");
   animation-delay: 6s;
 }
 .slideshow li:nth-child(3) span {
-  background-image: url("https://images.unsplash.com/photo-1468549940493-46152524296c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=952&q=80");
+  background-image: url("https://images.unsplash.com/photo-1478562672393-2412e5b9d634?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
   animation-delay: 12s;
 }
 .slideshow li:nth-child(4) span {
-  background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80");
+  background-image: url("https://images.unsplash.com/photo-1522878129833-838a904a0e9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
   animation-delay: 18s;
 }
 .slideshow li:nth-child(5) span {

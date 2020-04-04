@@ -34,15 +34,9 @@ router.get("/new", middleware.isLoggedIn, middleware.checkReviewExistence, funct
 );
 
 // Reviews Create
-router.post(
-  "/",
-  middleware.isLoggedIn,
-  middleware.checkReviewExistence,
-  function(req, res) {
+router.post("/", middleware.isLoggedIn, middleware.checkReviewExistence, function(req, res) {
     //lookup content using ID
-    Content.findById(req.params.id)
-      .populate("reviews")
-      .exec(function(err, content) {
+    Content.findById(req.params.id).populate("reviews").exec(function(err, content) {
         if (err) {
           req.flash("error", err.message);
           return res.redirect("back");
@@ -70,7 +64,7 @@ router.post(
   }
 );
 
-// Reviews Edit
+// EDIT REVIEWS
 router.get("/:review_id/edit", middleware.checkReviewOwnership, function(
   req,
   res

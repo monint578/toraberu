@@ -1,17 +1,26 @@
 <%- include ("../partials/header") %>
 
 <div class="container-fluid pt-4 px-5">
-		<h1 style="text-align: center;">Edit <%= content.name %></h1>
+		<h1 style="text-align: center;">Edit <%= content.name %> place</h1>
 		<div style="width: 30%; margin: 25px auto;">
 			<form action="/places/<%= content._id %>?_method=PUT" method="POST">
 				<div class="form-group">
 					<input class="form-control" type="text" name="content[name]" value="<%= content.name %>">
 				</div>
 				<div class="form-group">
+					<input class="form-control" type="text" name="content[location]" value="<%= content.location %>">
+				</div>
+				<div class="form-group">
 					<input class="form-control" type="text" name="content[image]" value="<%= content.image %>">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="text" name="content[description]" value="<%= content.description %>">
+					<input class="form-control" type="text" name="content[image]" value="<%= content.image %>">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="content[image]" value="<%= content.image %>">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" type="text" name="content[description]" rows="6"><%= content.description %></textarea>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-lg btn-outline-info btn-block">Submit</button>

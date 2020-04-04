@@ -4,17 +4,7 @@ var Content = require("../models/content");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 
-//comments New
-router.get("/new", middleware.isLoggedIn, function(req, res) {
-  Content.findById(req.params.id, function(err, content) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("comments/new", { content: content });
-    }
-  });
-});
-//all comments index
+//Comments index
 router.get("/", function(req, res) {
   Content.findById(req.params.id)
     .populate({
@@ -30,12 +20,25 @@ router.get("/", function(req, res) {
     });
 });
 
-//comments create
-router.post("/", middleware.isLoggedIn, function(req, res) {
+//comments New
+router.get("/new", middleware.isLoggedIn, function(req, res) {
   Content.findById(req.params.id, function(err, content) {
     if (err) {
+      req.flash("error", err.message);
       console.log(err);
-      res.redirect("/places");
+    } else {
+      res.render("comments/new", { content: content });
+    }
+  });
+});
+
+
+//comments create
+router.post("/", middleware.isLoggedIn, function(req, res) {
+  Content.findById(req.params.id).populate("comment").exec (function(err, content) {
+    if (err) {
+      req.flash("error", err.message);
+      res.redirect("back");
     } else {
       Comment.create(req.body.comment, function(err, newComment) {
         if (err) {
@@ -82,10 +85,18 @@ router.put("/:comment_id", middleware.chechCommentsOwnership, function(
     updatedComment
   ) {
     if (err) {
+      req.flash("error", err.message);
       res.redirect("back");
-    } else {
+    } Content.findById(req.params.id).populate("comment")
+    .exec(function(err, content) {
+      if (err) {
+        req.flash("error", err.message);
+        return res.redirect("back");
+      }
+      content.save();
+      req.flash("success", "Your comment was successfully edited.");
       res.redirect("/places/" + req.params.id);
-    }
+    });
   });
 });
 
