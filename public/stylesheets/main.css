@@ -8,6 +8,9 @@ a {
 }
 a:hover {
   text-decoration: none;
+  color: #17a2b8;
+}
+.navbar-nav .nav-link:hover {
   color: #17a2b8 !important;
 }
 .cards-images {
@@ -57,6 +60,7 @@ a:hover {
 }
 .tab-a:hover {
   color: #fff;
+  background-color: #178394;
 }
 .delete-form {
   display: inline;

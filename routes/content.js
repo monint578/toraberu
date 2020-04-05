@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("content/content", { content: allContents });
+      res.render("content/content", { content: allContents, currentUser: req.user });
     }
   });
 });
@@ -66,7 +66,7 @@ router.get("/:id", function (req, res) {
         console.log(err);
       } else {
         //render show template with that content
-        res.render("content/show", { content: foundContent });
+        res.render("content/show", { content: foundContent, currentUser: req.user });
       }
     });
 });

@@ -1,9 +1,13 @@
-<%- include ("../partials/header") %>
-
-<div class="container">
-    <div class="row">
-        <h1 style="text-align: center">New Review: <%= content.name %></h1>
-        <div style="width: 30%; margin: 25px auto;">
+<div class="modal fade" id="ModalReviews" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Write a New Review for "<%= content.name %>"</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
             <form action="/places/<%= content._id %>/reviews" method="POST">
                 <div class="form-group">
                     <label for="rating">Leave a rating:</label>
@@ -45,12 +49,10 @@
                     <textarea class="form-control" type="text" name="review[text]" placeholder="Write a review for this content..." rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block">Submit a Review</button>
+                    <button class="btn btn-info btn-block">Submit a Review</button>
                 </div>
             </form>
-            <a href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go Back</a>
+          </div>
         </div>
     </div>
 </div>
-
-<%- include ("../partials/footer") %>

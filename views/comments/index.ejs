@@ -5,8 +5,21 @@
 		<h1 class="display-5">"<%= content.name %>" comments page</h1>
         <p class="lead"></p>
         <a class="btn btn-info" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
-        <a class="btn btn-info" href="/places/<%= content._id %>/comments/new">Add new comment</a>
+        <% if(currentUser) { %>
+            <span class="mb-1">
+                <a class="btn btn-info" data-toggle="modal" data-target="#ModalComments" href="#">Write a New Comment</a>
+            </span>
+        <% } else { %>
+            <span class="mb-1">
+                <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info" href="#">Write a New Comment</a>
+            </span>
+        <% }; %>
     </header>
+    <% if(!currentUser) { %>
+        <%- include ("../partials/isloggedin") %>
+    <% } else { %>
+        <%- include ("../comments/new") %>
+    <% }; %>
     <br>
     <div class="row">
         <div class="col-md-12">
