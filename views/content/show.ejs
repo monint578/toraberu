@@ -3,7 +3,6 @@
 <div class="container-fluid pt-4 px-5">
     <!-- <a class="btn btn-info" href="/places">Go Back</a> -->
     <div class="show-head d-flex justify-content-between align-items-center rounded">
-        <%= console.log(content.images) %>
         <div class="d-flex align-items-center" style="align-items: baseline !important;">
             <h2 class="m-0"><%= content.name %></h2>
             <h4 class="m-0 pl-2 text-secondary font-weight-light">/ <%= content.location %></h4>
@@ -99,10 +98,33 @@
                         </div>
                     </div>
                     <% }) %>
+                    <!-- COMMENTS MODALS - NEW COMMENT -->
                     <div class="mb-1">
                         <hr class="mb-1">
-                        <a class="btn btn-info btn-sm" href="/places/<%= content._id %>/comments/new">Add new comment</a>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalComments">Add new comment</button>
                         <p class="delete-form"><a href="/places/<%= content._id %>/comments"><i class="fas fa-search" aria-hidden="true"></i> See all comments</a></p>
+                    </div>
+                    <div class="modal fade" id="ModalComments" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Create a New Comment</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form action="/places/<%= content._id %>/comments/" method="POST">
+                                    <div class="form-group">
+                                      <textarea class="form-control" type="text" name="comment[text]" placeholder="Comment" rows="6"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-lg btn-info btn-block">Submit new Comment</button>
+                                    </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>

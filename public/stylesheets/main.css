@@ -1,10 +1,14 @@
+/*SCROLL BAR*/
+::-webkit-scrollbar {
+  display: none;
+}
 a {
   text-decoration: none;
   color: black;
 }
 a:hover {
   text-decoration: none;
-  color: #17a2b8;
+  color: #17a2b8 !important;
 }
 .cards-images {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -64,7 +68,18 @@ a:hover {
 .maid-container {
   margin: 0 55vh;
 }
-
+/* REGISTRATION AND LOGIN */
+.login-form-left {
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1540202404-d0c7fe46a087?ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80);
+  background-repeat: no-repeat;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-position-x: center;
+  background-size: cover;
+}
+.login-form-right {
+  padding: 0 10vh;
+}
 /*PICTURE CAROUSEL*/
 .carousel-inner img {
   width: 100%;

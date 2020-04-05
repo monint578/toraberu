@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var User= require("../models/user");
 var passport = require("passport");
+const { check, validationResult } = require('express-validator');
 
 router.get("/", function(req, res){
 	res.render("landing");
@@ -15,7 +16,7 @@ router.get("/register", function(req, res){
 });
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req, res) {
-	var newUser = new User({username: req.body.username});
+	var newUser = new User({username: req.body.username, displayName: req.body.displayName});
 	User.register(newUser, req.body.password, function(err, user){
 		if(err){
 			req.flash("error", err.message);

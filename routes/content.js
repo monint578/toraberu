@@ -25,7 +25,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
 
   var author = {
     id: req.user._id,
-    username: req.user.username,
+    username: req.user.displayName,
   };
   var newContent = {
     name: name,

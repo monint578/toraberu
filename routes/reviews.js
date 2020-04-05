@@ -48,7 +48,7 @@ router.post("/", middleware.isLoggedIn, middleware.checkReviewExistence, functio
           }
           //add author username/id and associated content to the review
           review.author.id = req.user._id;
-          review.author.username = req.user.username;
+          review.author.username = req.user.displayName;
           review.content = content;
           //save review
           review.save();

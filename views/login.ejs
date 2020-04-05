@@ -1,28 +1,39 @@
-<%- include ("./partials/header") %>
-
-<div class="container-fluid py-4 px-5">
-    <h1 style="text-align: center;">Login</h1>
-    <div style="width: 30%; margin: 25px auto;">
-      <form action="/login" method="POST">
-        <div class="form-group">
-          <input class="form-control" type="text" name="username" placeholder="username">
-        </div>
-        <div class="form-group">
-          <input class="form-control" type="password" name="password" placeholder="password">
-        </div>
-        <div class="form-group">
-          <input class="custom-control-input" type="checkbox" id="autoSizingCheck">
-          <label class="form-check-label" for="autoSizingCheck">Remember me</label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button class="btn btn-lg btn-outline-info btn-block">Login!</button>
-        <div class="form-group">
-          <a><i class="fab fa-facebook-square"></i></a>
-          <a><i class="fab fa-google-plus-square"></i></a>
-        </div>
-      </form>
-      <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link  rel="stylesheet" href="/stylesheets/hover.css">
+		<link rel = "icon" href = "/img/1.png" type = "image/x-icon"> 
+		<title>Toraberu</title>
+  </head>
+  <body class="row align-items-center">
+    <div class="col-md-6 login-form-left">
     </div>
-</div>
-
-<%- include ("./partials/footer") %>
+    <div class="col-md-6 login-form-right">
+      <br>
+      <h1 class="text-center text-info display-4"><i class="fas fa-map-marked-alt fa-sm"></i> Toraberu</h1>
+      <h4 class="text-center font-weight-light">Please login</h4>
+      <div>
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="email">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="password">
+          </div>
+          <button class="btn btn-lg btn-outline-info btn-block">Login!</button>
+        </form>
+        <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
+      </div>
+    </div>
+  </body>
+      <script src="https://kit.fontawesome.com/3d60d52d76.js" crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
