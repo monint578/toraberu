@@ -19,9 +19,29 @@
             <% } %>
         </p>
         <a class="btn btn-info" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
-		<a class="btn btn-info <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/places/<%= content._id %>/reviews/new">
-            Write a New Review</a>
+        <% if(currentUser) { %>
+            <span class="mb-1">
+                <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> 
+                    <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info">Write a New Review</a>
+                <% } else { %>
+                    <a data-toggle="modal" data-target="#ModalReviews" class="btn btn-info">Write a New Review</a>
+                <% }; %>
+            </span>
+        <% } else { %>
+            <span class="mb-1">
+                <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info" href="#">Write a New Review</a>
+            </span>
+        <% }; %>
     </header>
+    <% if(!currentUser) { %>
+        <%- include ("../partials/isloggedin") %>
+    <% } else { %>
+        <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %>
+            <%- include ("../reviews/added") %>
+        <% } else { %>
+            <%- include ("../reviews/new") %>
+        <% }; %>
+    <% }; %>
     <br>
     <div class="row">
         <div class="col-md-12">
@@ -38,7 +58,7 @@
                         </p>
                     <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
                         <a class="btn btn-outline-info btn-sm"
-                        href="/places/<%=content._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                        href="/places/<%=content._id %>/reviews/<%=review._id %>/edit">Edit review</a>
                         <!-- <form class="delete-form" action="/places/<%=content._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
                             <input type="submit" class="btn btn-info btn-sm" value="Delete">
                         </form> -->

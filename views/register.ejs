@@ -18,7 +18,7 @@
       <br>
       <h1 class="text-center text-info display-4"><i class="fas fa-map-marked-alt fa-sm"></i> Toraberu</h1>
       <h4 class="text-center font-weight-light">Please register</h4>
-        <form action="/register" method="POST">
+        <form class="mb-0" action="/register" method="POST">
           <div class="form-group">
             <input class="form-control" type="text" name="displayName" placeholder="Iron Man" required>
           </div>
@@ -34,7 +34,10 @@
           </div> -->
           <button class="btn btn-lg btn-outline-info btn-block">Sign Up!</button>
         </form>
-        <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
+        <div class="d-flex justify-content-between pt-1">
+          <a href="/places"><i class="fa fa-angle-double-left"></i> Go Back</a>
+          <a class="text-right" href="/login">Already have account? Login! <i class="fas fa-angle-double-right"></i></a>
+        </div>
       </div>
     </div>
   </body>
