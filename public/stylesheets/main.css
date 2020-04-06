@@ -1,3 +1,7 @@
+/*BODY*/
+body {
+  font-family: 'Raleway', sans-serif;
+}
 /*SCROLL BAR*/
 ::-webkit-scrollbar {
   display: none;
@@ -85,9 +89,15 @@ a:hover {
   width: 100%;
   height: 100%;
 }
-.site-footer {
+/*FOOTER*/
+.footer {
   background-color: #e9ecef;
-  height: 200px;
+}
+.footer-a {
+  color: #6c757d;
+}
+.footer-mongo:hover {
+  filter: invert(49%) sepia(78%) saturate(482%) hue-rotate(140deg) brightness(92%) contrast(91%);
 }
 /*LANDING PAGE*/
 #landing-header {
