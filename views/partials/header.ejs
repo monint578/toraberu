@@ -13,27 +13,25 @@
 		<title>Toraberu</title>
 	</head>
 	<body class="pt-5">
-		<nav class="navbar navbar-expand-md fixed-top navbar-light" style="background-color: #e9ecef;">
-		<div class="container-fluid">
-		  <div class="navbar-header">
-			<a class="navbar-brand text-info" href="/places"><i class="fas fa-map-marked-alt fa-lg"></i> Toraberu</a>
-		  </div>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav ml-auto">
-				<% if(!currentUser){ %>
-					<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-					<li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-				<% } else { %>
-					<li class="nav-item"><a class="nav-link" href="/user/<%= currentUser._id %>">Signed In As <strong><%= currentUser.displayName %></strong></a></li>
-					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-				<% } %>		
-			</ul>
-		 </div>
-		</div>
-		</nav>
+			<nav class="navbar navbar-expand-md fixed-top navbar-light" style="background-color: #e9ecef;">
+				<div class="navbar-header ml-4">
+				  <a class="navbar-brand text-info m-0" href="/places"><i class="fas fa-map-marked-alt fa-lg"></i> Toraberu</a>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+				  <ul class="navbar-nav ml-auto">
+					  <% if(!currentUser){ %>
+						  <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+					  <% } else { %>
+						  <li class="nav-item"><a class="nav-link" href="/user/<%= currentUser._id %>">Signed In As <strong><%= currentUser.displayName %></strong></a></li>
+						  <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+					  <% } %>		
+				  </ul>
+			   </div>
+			</nav>
 	<div class="container-fluid pt-4 px-5">
 		<% if(error && error.length > 0) {%>
 			<div class="alert alert-danger" role="alert">

@@ -1,9 +1,9 @@
 <%- include ("../partials/header") %>
 
-<div class="container-fluid">
-	<header class="jumbotron py-3 px-5 mb-0">
+<div class="container-fluid px-4">
+	<header class="jumbotron m-0 p-4">
 		<h1 class="display-4">Welcome to Toraberu!</h1>
-        <p class="lead" style="font-weight: 400;">Toraberu is our hand-picked <em>unbelievable</em> places for you to visit</p>
+        <p class="lead font-weight-normal">Toraberu is our hand-picked <em>unbelievable</em> places for you to visit</p>
         <% if(currentUser) { %>
             <p><a class="btn btn-info btn-lg" href="/places/new">Add New Destination</a></p>
         <% } else { %>
@@ -16,17 +16,17 @@
     <% if(!currentUser) { %>
         <%- include ("../partials/isloggedin") %>
     <% }; %>
-	<div class="row text-center card-deck">
+	<div class="row text-center card-deck mx-0">
         <% content.forEach(function(content){ %>
-        <div class="col-md-3 col-sm-6 mt-4">
-            <div class="card" style="align-items: center;">
+        <div class="col-xl-3 col-lg-4 col-md-6 px-4 mt-4">
+            <div class="card m-0">
                 <img class="card-img-top cards-images rounded" src="<%= content.images[0] %>">
-                <div class="card-body p-1">
-                    <h4 class="card-title text-left px-2 pt-2"><%= content.name %></h4>
-                    <p class="card-text text-left text-secondary"><%= content.description.substring(0, 150) %>...</p>
+                <div class="card-body p-2">
+                    <h4 class="card-title text-left m-0 pl-2 py-1"><%= content.name %></h4>
+                    <p class="card-text text-left text-secondary pl-2 m-0"><%= content.description.substring(0, 150) %>...</p>
                     <hr class="my-1">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12">
+                    <div class="row m-0">
+                        <div class="col-lg-6 col-md-6 py-1 pl-2 text-left">
                             <% if (content.rating === 0) { %>
                                 <em>No reviews yet.</em>
                                 <% } else { %>
@@ -36,9 +36,9 @@
                                     <span class="<% if (content.rating > 3.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
                                     <span class="<% if (content.rating > 4.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
                                 <% } %>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <p><a href="/places/<%= content._id %>" class="">Read more <i class="fas fa-angle-double-right"></i></a></p>
+                        </div> 
+                        <div class="col-md-6 py-1 pr-2 text-right">
+                            <p class="m-0"><a href="/places/<%= content._id %>" class="">Read more <i class="fas fa-angle-double-right"></i></a></p>
                         </div>
                     </div>
                 </div>
