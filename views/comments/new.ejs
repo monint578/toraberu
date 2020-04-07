@@ -11,7 +11,7 @@
           <div class="modal-body">
             <form action="/places/<%= content._id %>/comments/" method="POST">
                 <div class="form-group">
-                  <textarea class="form-control" type="text" name="comment[text]" placeholder="Comment" rows="6"></textarea>
+                  <textarea class="form-control" type="text" name="comment[text]" placeholder="Comment" rows="6" required></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-info btn-block">Submit new Comment</button>

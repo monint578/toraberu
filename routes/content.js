@@ -77,13 +77,12 @@ router.get("/:id/edit", middleware.chechContentOwnership, function (req, res) {
     res.render("content/edit", { content: foundContent });
   });
 });
+
 //UPDATE CAMPGROUD ROUTE
 router.put("/:id", middleware.chechContentOwnership, function (req, res) {
-  Content.findByIdAndUpdate(req.params.id, req.body.content, function (
-    err,
-    updatedContent
-  ) {
+  Content.findByIdAndUpdate(req.params.id, req.body.content, req.body.images, function (err, updatedContent) {
     if (err) {
+      req.flash("error", "Something then wrong");
       res.redirect("/places");
     } else {
       res.redirect("/places/" + req.params.id);
