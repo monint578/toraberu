@@ -1,8 +1,9 @@
 <%- include ("../partials/header") %>
 
-<div class="container-fluid">
-        <h1 class="text-center">Edit Review</h1>
-        <div class="maid-container">
+
+<div class="container-fluid heightvh">
+        <h1 class="text-center">Change Review</h1>
+        <div style="width: 30%; margin: 25px auto;">
             <form action="/places/<%= content_id %>/reviews/<%= review._id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <label for="rating">Leave a rating:</label>
@@ -49,7 +50,6 @@
             </form>
             <a href="/places/<%= content_id %>"><i class="fas fa-angle-double-left"></i> Go Back</a>
         </div>
-    </div>
 </div>
 
 <%- include ("../partials/footer") %>

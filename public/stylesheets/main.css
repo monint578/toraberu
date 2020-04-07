@@ -2,6 +2,9 @@
 body {
   font-family: 'Raleway', sans-serif;
 }
+.heightvh {
+  height: 100vh;
+}
 /*SCROLL BAR*/
 ::-webkit-scrollbar {
   display: none;
