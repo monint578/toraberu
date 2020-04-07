@@ -1,16 +1,16 @@
 <%- include ("../partials/header") %>
 
-<div class="container-fluid heightvh">
+<div class="container-fluid heightvh show-page-nav">
     <!-- <a class="btn btn-info" href="/places">Go Back</a> -->
-    <div class="show-head d-flex justify-content-between align-items-center rounded">
-        <div class="d-flex align-items-center" style="align-items: baseline !important;">
-            <h2 class="m-0"><%= content.name %></h2>
-            <h4 class="m-0 pl-2 text-secondary font-weight-light">/ <%= content.location %></h4>
+    <div class="show-head d-flex justify-content-between rounded">
+        <div class="d-flex align-items-baseline">
+            <h2 class="show-head-h2 m-0"><%= content.name %></h2>
+            <h4 class="show-head-h4 m-0 pl-2 text-secondary font-weight-light">/ <%= content.location %></h4>
         </div>
             <% if (content.rating === 0) { %>
                 <h5 class="m-0"><em>No reviews yet.</em></h5>
                 <% } else { %>
-                <p>
+                <p class="m-0">
                     <span class="fas fa-star checked"></span>
                     <span class="<% if (content.rating > 1.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
                     <span class="<% if (content.rating > 2.5) { %> fas fa-star checked <% } else { %> far fa-star checked <% }; %>"></span>
@@ -22,8 +22,8 @@
                 <% }; %>
     </div>
     <br>
-    <div class="row">
-        <div class= "col-md-7">
+    <div class="row show-page-nav">
+        <div class= "col-md-7 order-md-1 order-2">
             <ul class="nav nav-tabs">
                 <li class="nav-item tabs rounded-top">
                   <a class="nav-link active tab-a" data-toggle="tab" href="#info">Info</a>
@@ -64,9 +64,6 @@
                                 <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
                                 <a class="btn btn-sm btn-outline-info"
                                     href="/places/<%=content._id %>/reviews/<%=review._id %>/edit">Edit review</a>
-                                <!-- <form class="delete-form" action="/places/<%=content._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
-                                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                                </form> -->
                                 <% } %>
                             </div>
                         </div>
@@ -77,7 +74,7 @@
                     <% if(currentUser) { %>
                         <div class="mb-1">
                             <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> 
-                                <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info btn-sm">Write a New Review</a>
+                                <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info btn-sm a-link">Write a New Review</a>
                                 <%- include ("../reviews/added") %>
                             <% } else { %>
                                 <a data-toggle="modal" data-target="#ModalReviews" class="btn btn-info btn-sm">Write a New Review</a>
@@ -127,7 +124,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 order-md-2 order-1 pb-4 carousel-padding">
             <div id="demo" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ul class="carousel-indicators">

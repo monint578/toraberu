@@ -109,29 +109,6 @@ router.put("/:review_id", middleware.checkReviewOwnership, function(req, res) {
     }
   );
 });
-
-// // Reviews Delete
-// router.delete("/:review_id", middleware.checkReviewOwnership, function (req, res) {
-//     Review.findByIdAndRemove(req.params.review_id, function (err) {
-//         if (err) {
-//             req.flash("error", err.message);
-//             return res.redirect("back");
-//         }
-//         Content.findByIdAndUpdate(req.params.id, {$pull: {reviews: req.params.review_id}}, {new: true}).populate("reviews").exec(function (err, content) {
-//             if (err) {
-//                 req.flash("error", err.message);
-//                 return res.redirect("back");
-//             }
-//             // recalculate content average
-//             content.rating = calculateAverage(content.reviews);
-//             //save changes
-//             content.save();
-//             req.flash("success", "Your review was deleted successfully.");
-//             res.redirect("/places/" + req.params.id);
-//         });
-//     });
-// });
-
 function calculateAverage(reviews) {
   if (reviews.length === 0) {
     return 0;

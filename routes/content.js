@@ -102,26 +102,5 @@ router.delete("/:id", middleware.chechContentOwnership, function (req, res) {
     }
   });
 });
-//             // deletes all comments associated with the content
-//             Comment.remove({"_id": {$in: content.comments}}, function (err) {
-//                 if (err) {
-//                     console.log(err);
-//                     return res.redirect("/places");
-//                 }
-//                 // // deletes all reviews associated with the content
-//                 // Review.remove({"_id": {$in: content.reviews}}, function (err) {
-//                 //     if (err) {
-//                 //         console.log(err);
-//                 //         return res.redirect("/places");
-//                 //     }
-//                 //     //  delete the content
-//                 //     content.remove();
-//                 //     req.flash("success", "Campground deleted successfully!");
-//                 //     res.redirect("/places");
-//                 // });
-//             });
-//         }
-//     });
-// });
 
 module.exports = router;

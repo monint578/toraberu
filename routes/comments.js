@@ -94,7 +94,7 @@ router.put("/:comment_id", middleware.chechCommentsOwnership, function(
         return res.redirect("back");
       }
       content.save();
-      req.flash("success", "Your comment was successfully edited.");
+      req.flash("success", "Your comment was successfully edited");
       res.redirect("/places/" + req.params.id);
     });
   });
@@ -109,7 +109,7 @@ router.delete("/:comment_id", middleware.chechCommentsOwnership, function(
     if (err) {
       res.redirect("back");
     } else {
-      req.flash("success", "Comments deleted");
+      req.flash("success", "Comment was deleted");
       res.redirect("/places/" + req.params.id);
     }
   });

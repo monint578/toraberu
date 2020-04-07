@@ -3,11 +3,7 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 .heightvh {
-  height: 100vh;
-}
-/*SCROLL BAR*/
-::-webkit-scrollbar {
-  display: none;
+  height: -100vh;
 }
 a {
   text-decoration: none;
@@ -17,15 +13,56 @@ a:hover {
   text-decoration: none;
   color: #17a2b8;
 }
-.navbar-nav .nav-link:hover {
+.a-link {
+  color:#fff !important;
+}
+.navbar-nav .nav-link:hover, .a-link:hover {
   color: #17a2b8 !important;
 }
+
+/*SCROLL BAR*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*FOOTER*/
+.footer {
+  background-color: #e9ecef;
+}
+.footer-a {
+  color: #6c757d;
+}
+.footer-mongo:hover, .footer-a:hover {
+  filter: invert(49%) sepia(78%) saturate(482%) hue-rotate(140deg) brightness(92%) contrast(91%);
+}
+
+/* REGISTRATION AND LOGIN */
+.login-form-left {
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1540202404-d0c7fe46a087?ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80);
+  background-repeat: no-repeat;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-position-x: center;
+  background-size: cover;
+}
+
+/*FORMS*/
+.maid-container {
+  margin: auto;
+  width: 50%;
+}
+
+/*MAIN PAGE*/
 .cards-images {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+}
+.card-img-top {
+  height: 28vh;
+  object-fit: cover;
 }
 .card {
   border: none;
@@ -40,11 +77,12 @@ a:hover {
   transform: scale(1.05);
 }
 .jumbotron {
-  background-image: url(https://images.unsplash.com/photo-1549247796-5d8f09e9034b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1299&q=80);
+  background-image: url(/img/jumbotron.jfif);
   background-size: 100%;
   color: #fff;
   opacity: 0.9;
   background-position-y: center;
+  padding: 30px;
 }
 .btn-info:hover {
   color: #17a2b8;
@@ -52,11 +90,13 @@ a:hover {
   background-image: none;
   border-color: #17a2b8;
 }
+
 /*SHOW PAGE*/
 .show-head {
   background-color: #e9ecef;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   padding: 10px;
+  height: 10vh;
 }
 .tabs {
   background-color: #17a2b8;
@@ -75,37 +115,17 @@ a:hover {
 .checked {
   color: #17a2b8;
 }
-/*FORMS*/
-.maid-container {
-  margin: 0 55vh;
-}
-/* REGISTRATION AND LOGIN */
-.login-form-left {
-  height: 100vh;
-  background-image: url(https://images.unsplash.com/photo-1540202404-d0c7fe46a087?ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80);
-  background-repeat: no-repeat;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-position-x: center;
-  background-size: cover;
-}
 .login-form-right {
   padding: 0 10vh;
 }
-/*PICTURE CAROUSEL*/
+
+/*SHOW PAGE - PICTURE CAROUSEL*/
 .carousel-inner img {
   width: 100%;
-  height: 100%;
+  height: 50vh;
+  object-fit: none;
 }
-/*FOOTER*/
-.footer {
-  background-color: #e9ecef;
-}
-.footer-a {
-  color: #6c757d;
-}
-.footer-mongo:hover {
-  filter: invert(49%) sepia(78%) saturate(482%) hue-rotate(140deg) brightness(92%) contrast(91%);
-}
+
 /*LANDING PAGE*/
 #landing-header {
   z-index: 3;
@@ -122,7 +142,6 @@ a:hover {
   list-style-type: none;
 }
 .slideshow, .slideshow:after {
-  top: -16px; /*Not sure why I needed this fix*/
   width: 100%;
   height: 100%;
   left: 0px;
@@ -197,7 +216,94 @@ a:hover {
     opacity: 0;
   }
 }
-
 .no-cssanimations .cb-slideshow li span {
   opacity: 1;
+}
+
+/*MEDIA - MOBILE FRIENDLY*/
+@media (min-width: 426px) {
+  .show-page-nav {
+    padding: 0 1rem;
+  }
+  .show-head {
+    align-items: center;
+  }
+}
+@media (max-width: 425px) {
+  .carousel-inner img {
+    height: 30vh;
+  }
+  .d-flex {
+    flex-direction: column;
+    height: 100%;
+  }
+  .show-head {
+    align-items: left;
+  }
+  .tab-a {
+    padding: 5px;
+  }
+  .maid-container {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  #landing-header {
+    margin: 35vh 10px;
+  }
+}
+@media (max-width: 767px) {
+  .login-form-left {
+    display: none;
+  }
+  .login-form-right {
+    margin-top: 10vh;
+  }
+  .carousel-inner img {
+    height: 40vh;
+  }
+  .carousel-padding {
+    padding-top: 0px;
+  }
+  .show-head-h2 {
+    font-size: 1.5rem;
+  }
+  .show-head-h4 {
+    font-size: 1rem;
+  }
+  .jumbotron {
+    background-image: url(/img/jumbotronmini.jfif);
+    padding: 10px;
+    text-align: center;
+  }
+  .display-4, .display-5{
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .card-img-top {
+    height: 30vh;
+  }
+}
+@media (min-width: 1025px) {
+  .carousel-padding {
+    padding-top: 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .carousel-inner img {
+    height: 35vh;
+  }
+  .maid-container {
+    width: 80%;
+  }
+}
+@media (max-width: 1440px) {
+  .card-img-top {
+    height: 25vh;
+  }
+  #landing-header {
+    margin: 35vh 20vh;
+  }
 }

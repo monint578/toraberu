@@ -1,7 +1,7 @@
 <%- include ("../partials/header") %>
 
-<div class="container-fluid heightvh">
-	<h1 class="text-center">Edit <%= content.name %> comment</h1>
+<div class="container-fluid heightvh maid-container">
+	<h1 class="text-center">Edit comment</h1>
 	<div>
 		<form action="/places/<%= content_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
 			<div class="form-group">

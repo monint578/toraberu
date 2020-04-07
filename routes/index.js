@@ -23,7 +23,7 @@ router.post("/register", function(req, res) {
 			return res.redirect("/register")
 		}
 		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcome to YelpCamp " + user.username);
+			req.flash("success", "Welcome to Toraberu " + user.username);
 			res.redirect("/places");
 		});
 	});
@@ -42,7 +42,7 @@ router.post("/login", passport.authenticate("local", {
 //log-out
 router.get("/logout", function(req, res){
 	req.logout();
-	req.flash("error", "Logged you out");
+	req.flash("error", "You have logged out");
 	res.redirect("/places");
 });
 
