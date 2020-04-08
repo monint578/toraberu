@@ -229,6 +229,16 @@ a:hover {
     align-items: center;
   }
 }
+@media (max-width: 375px) {
+  .modal-edit {
+    display: inline-flex;
+    padding-top: 10px;
+    flex-direction: column-reverse;
+  }
+  .lead-btn {
+    margin-bottom: 10px;
+  }
+}
 @media (max-width: 425px) {
   .carousel-inner img {
     height: 30vh;
@@ -265,7 +275,7 @@ a:hover {
   .carousel-padding {
     padding-top: 0px;
   }
-  .show-head-h2 {
+  .show-head-h2, .display-5, .edit-name {
     font-size: 1.5rem;
   }
   .show-head-h4 {
@@ -276,7 +286,7 @@ a:hover {
     padding: 10px;
     text-align: center;
   }
-  .display-4, .display-5{
+  .display-4{
     font-size: 2rem;
   }
   .lead {

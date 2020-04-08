@@ -1,7 +1,7 @@
 <%- include ("../partials/header") %>
 
 <div class="container-fluid heightvh">
-    <header class="jumbotron py-3 px-5 mb-0">
+    <header class="jumbotron mb-0">
 		<h1 class="display-5">"<%= content.name %>" review page</h1>
         <p class="lead">
             <% if (content.rating === 0) { %>
@@ -18,18 +18,18 @@
             </p>
             <% } %>
         </p>
-        <a class="btn btn-info" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
+        <a class="btn btn-info lead-btn" href="/places/<%= content._id %>"><i class="fas fa-angle-double-left"></i> Go back</a>
         <% if(currentUser) { %>
             <span class="mb-1">
                 <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> 
-                    <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info">Write a New Review</a>
+                    <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info lead-btn">Write a New Review</a>
                 <% } else { %>
-                    <a data-toggle="modal" data-target="#ModalReviews" class="btn btn-info">Write a New Review</a>
+                    <a data-toggle="modal" data-target="#ModalReviews" class="btn btn-info lead-btn">Write a New Review</a>
                 <% }; %>
             </span>
         <% } else { %>
             <span class="mb-1">
-                <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info" href="#">Write a New Review</a>
+                <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info lead-btn" href="#">Write a New Review</a>
             </span>
         <% }; %>
     </header>

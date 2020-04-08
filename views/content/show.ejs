@@ -72,7 +72,7 @@
                     <% }; %>
                     <!-- REVIEWS MODALS - CREATE NEW REVIEW - YOU HAVE TO BE LOGEDIN-->
                     <% if(currentUser) { %>
-                        <div class="mb-1">
+                        <div class="mb-1 modal-edit">
                             <% if (currentUser && content.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> 
                                 <a data-toggle="modal" data-target="#ModalReviewsAdded" class="btn btn-info btn-sm a-link">Write a New Review</a>
                                 <%- include ("../reviews/added") %>
@@ -83,7 +83,7 @@
                             <p class="delete-form"><a href="/places/<%= content._id %>/reviews"><i class="fas fa-search" aria-hidden="true"></i> See all reviews</a></p>
                         </div>
                     <% } else { %>
-                        <div class="mb-1">
+                        <div class="mb-1 modal-edit">
                             <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info btn-sm" href="#">Write a New Review</a>
                             <p class="delete-form"><a href="/places/<%= content._id %>/reviews"><i class="fas fa-search" aria-hidden="true"></i> See all reviews</a></p>
                         </div>
@@ -111,12 +111,12 @@
                     <% }); %>
                     <!-- COMMENTS MODALS - CREATE NEW COMMENT - YOU HAVE TO BE LOGEDIN-->
                     <% if(currentUser) { %>
-                        <div class="mb-1">
+                        <div class="mb-1 modal-edit">
                             <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModalComments" href="#">Write a New Comment</a>
                             <p class="delete-form"><a href="/places/<%= content._id %>/comments"><i class="fas fa-search" aria-hidden="true"></i> See all comments</a></p>
                         </div>
                     <% } else { %>
-                        <div class="mb-1">
+                        <div class="mb-1 modal-edit">
                             <a data-toggle="modal" data-target="#IsLoggedIn" class="btn btn-info btn-sm" href="#">Write a New Comment</a>
                             <p class="delete-form"><a href="/places/<%= content._id %>/comments"><i class="fas fa-search" aria-hidden="true"></i> See all comments</a></p>
                         </div>

@@ -1,7 +1,7 @@
 <%- include ("../partials/header") %>
 
 <div class="container-fluid heightvh">
-		<h1 class="text-center">Edit "<%= content.name %>" place</h1>
+		<h1 class="text-center edit-name">Edit "<%= content.name %>" place</h1>
 		<div class="maid-container">
 			<form action="/places/<%= content._id %>?_method=PUT" method="POST">
 				<div class="form-group">
