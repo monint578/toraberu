@@ -21,8 +21,7 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 seedDB();
-var url = process.env.DATABASEURL || "mongodb://mongoss:27017/yelpcamps"
-mongoose.connect(url, {useNewUrlParser: true});
+mongoose.connect("process.env.DATABASEURL", {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
