@@ -20,7 +20,7 @@ var commentRoutes = require("./routes/comments"),
   userRoutes = require("./routes/user"),
   indexRoutes = require("./routes/index");
 
-// seedDB();
+seedDB();
 // mongoose
 //   .connect(
 //     "mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority",
