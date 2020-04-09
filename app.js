@@ -20,17 +20,12 @@ var commentRoutes = require("./routes/comments"),
   userRoutes = require("./routes/user"),
   indexRoutes = require("./routes/index");
 
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true}).then(() => {
+  console.log("connected to DB");
+});
+
 seedDB();
-mongoose.connect("mongodb+srv://Admin:<password>@toraberu-n3cwg.mongodb.net/test?retryWrites=true&w=majority",
-{
-  useNewUrlParser: true,
-  useCreateIndex: true
-}
-)
-  .then(() => {
-    console.log("connected to ATLAS");
-  });
-// mongoose.connect("process.env.DATABASEURL", {useNewUrlParser: true});
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
