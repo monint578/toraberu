@@ -21,20 +21,14 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 seedDB();
-// mongoose
-//   .connect(
-//     "mongodb+srv://monint:kalakutas69@cluster0-b2nzf.mongodb.net/test?retryWrites=true&w=majority",
-//     {
-//       useNewUrlParser: true,
-//       useCreateIndex: true
-//     }
-//   )
-//   .then(() => {
-//     console.log("connected to ATLAS");
-//   });
-mongoose.connect("mongodb://mongoss:27017/yelpcamps", {
-  useNewUrlParser: true
+mongoose.connect("mongodb+srv://Admin:iamunicorn123@toraberu-n3cwg.mongodb.net/test?retryWrites=true&w=majority",
+{
+  useNewUrlParser: true,
+  useCreateIndex: true
+}).then(() => {
+  console.log("connected to ATLAS");
 });
+mongoose.connect("process.env.DATABASEURL", {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
