@@ -15,19 +15,19 @@ router.get("/register", function(req, res){
 	res.render("register");
 });
 //HANDLE SIGN UP LOGIC
-router.post("/register", function(req, res) {
-	var newUser = new User({username: req.body.username, displayName: req.body.displayName});
-	User.register(newUser, req.body.password, function(err, user){
-		if(err){
-			req.flash("error", err.message);
-			return res.redirect("/register")
-		}
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcome to Toraberu " + user.username);
-			res.redirect("/places");
-		});
-	});
-});
+// router.post("/register", function(req, res) {
+// 	var newUser = new User({username: req.body.username, displayName: req.body.displayName});
+// 	User.register(newUser, req.body.password, function(err, user){
+// 		if(err){
+// 			req.flash("error", err.message);
+// 			return res.redirect("/register")
+// 		}
+// 		passport.authenticate("local")(req, res, function(){
+// 			req.flash("success", "Welcome to Toraberu " + user.username);
+// 			res.redirect("/places");
+// 		});
+// 	});
+// });
 
 //show login form
 router.get("/login", function(req, res){

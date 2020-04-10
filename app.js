@@ -20,12 +20,12 @@ var commentRoutes = require("./routes/comments"),
   userRoutes = require("./routes/user"),
   indexRoutes = require("./routes/index");
 
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true}).then(() => {
+const url = process.env.DATABASEURL || "mongodb://mongoss:27017/yelpcamps"
+mongoose.connect(url, {useNewUrlParser: true}).then(() => {
   console.log("connected to DB");
 });
 
-seedDB();
-
+// seedDB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");

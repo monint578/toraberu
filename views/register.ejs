@@ -15,7 +15,9 @@
     <div class="col-md-5 col-lg-6 login-form-left">
     </div>
     <div class="col-md-7 col-lg-6 login-form-right">
-      <br>
+      <div class="alert alert-info text-center" role="alert">
+        This site is just for display. So for this moment registration is blocked.
+      </div>
       <h1 class="text-center text-info display-4"><i class="fas fa-map-marked-alt fa-sm"></i> Toraberu</h1>
       <h4 class="text-center font-weight-light">Please register</h4>
         <form class="mb-0" action="/register" method="POST">
@@ -27,7 +29,7 @@
           </div>
           <div class="form-group">
             <input class="form-control" type="password" name="password" id="password" placeholder="password123" required pattern="(?=.*\d)(?=.*[a-z]).{7,}">
-            <small class="form-text  text-muted">Must be more than 7 character long and have numbers in it. "pasword123" is definately not suitable</small>
+            <small class="form-text text-muted">Must be more than 7 character long and have numbers in it. "pasword123" is definately not suitable</small>
           </div>
           <div class="form-group">
             <input class="form-control" type="password" name="password2" id="confirm_password" placeholder="password123" required>
